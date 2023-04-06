@@ -26,7 +26,7 @@
             <% if @book.user == current_user %>
               <td>
                 <%= link_to "Edit", edit_book_path(@book.id), class:'btn btn-sm btn-success'%>
-                </td>
+              </td>
               <td>
                 <%= link_to "Destroy", book_path(@book.id), method: :delete, "date-confirm" => "本当に消しますか？", class:'btn btn-sm btn-danger' %>
               </td>
@@ -41,13 +41,14 @@
                        <i class="fas fa-heart"></i><%= "#{@book.favorites.count}" %>
                     <% end %>
                 <% end %>
-             </td>
-              <td>
-                <td>コメント件数：<%= @book.book_comments.count %></td>
-              </td>
+            </td>
+            <td>
+              コメント件数：<%= @book.book_comments.count %>
+            </td>
           </tr>
         </tbody>
       </table>
+
       <% @book.book_comments.each do |book_comment| %>
         <p>
           <%= image_tag book_comment.user.get_profile_image(70,70) %>
@@ -65,6 +66,7 @@
         <%= f.text_area :comment, rows: '5' %>
         <%= f.submit "送信する" %>
       <% end %>
+
     </div>
   </div>
 </div>
